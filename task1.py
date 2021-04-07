@@ -97,7 +97,7 @@ class student:
         def getHonorRoll(self):
             self.grades.sort()
             ave5=(self.grades[-1]+self.grades[-2]+self.grades[-3]+self.grades[-4]+self.grade[-5])/5
-            if ave5 >= 80:
+            if ave5 >= 86:
                 print("Honor Roll")
                 return True
             else:
