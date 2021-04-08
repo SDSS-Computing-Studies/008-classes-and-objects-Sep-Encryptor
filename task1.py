@@ -43,7 +43,7 @@ class student:
     def inputCourses(self):
 
         print("enter your course grade")
-        print("================================================")
+        print("===============================================")
         
         course=[]
 
@@ -63,7 +63,7 @@ class student:
             num=len(course)
             i=0
             print("enter your course grades")
-            print("============================================")
+            print("===============================================")
             grades=[]
             while i<num:
                 a=input("course grade= ")
