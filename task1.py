@@ -23,90 +23,56 @@ constructor     - should require the student name, studentNumber and grade (in t
 """
 
 class student:
+    name = ""
+    studentNumber = ""
+    grade = 0
+    courses = []
+    grades = []
+    honornum = 0
+
 
     # properties should be listed first
-    name=''
-    number=''
-    grade=0
 
+    def __init__(self,name,studentNumber,grade): # You will need to create your own input parameters for all methods
+        self.name = name
+        self.studentNumber = studentNumber
+        self.grade = grade
+        print("This is the profile of " + self.name + "with the student number " + self.studentNumber + " in grade " + str(self.grade) + ".")
+    def getCourses(self,courses):
+        self.courses = courses
+        return self.courses
 
-    def __init__(self,name,number,grade):
-        # You will need to create your own input parameters for all methods
-        self.name=name
-        self.number=number
-        self.grade=str(grade)
+    def getGrades(self,grades):
+        self.grades = grades
+        return self.grades
 
-        print('Student name is '+ self.name)
-        print('His/her student number is '+self.number)
-        print("He/She is in grade "+ self.grade)
+    def index(self):
+        index = input("Enter the index: ")
+        return int(index)
 
-    def inputCourses(self):
+    def showCourses(self):
+        print(self.courses)
 
-        print("enter your course grade")
-        print("===============================================")
+    def showGrades(self,index):
+        print(self.courses[index])
+        print(self.grades[index])
+       
+    def getHonorRoll(self):
+        self.grades.sort()
+        honornum = (self.grades[-1] + self.grades[-2] + self.grades[-3] + self.grades[-4] + self.grades[-5])/5
+        if honornum >= 86:
+            honor = True
+            print("This student is on the honor roll")
+        else: 
+            honor = False
+        return honor
         
-        course=[]
+    def __del__(self):
+        print("Complete.")
 
-        while True:
-            a=input("course = ")
-            if a != "0":
-                course.append(a)
-            if a == '0':
-                break
-
-            return course
-
-        def getCourses(self,course):
-            self.course=course
-
-        def inputGrades(self,course):
-            num=len(course)
-            i=0
-            print("enter your course grades")
-            print("===============================================")
-            grades=[]
-            while i<num:
-                a=input("course grade= ")
-                a=int(a)
-                grades.append(a)
-                i += 1
-
-            return grades
-
-        def getGrades(self,grades):
-            self.grades=grades
-
-        def avarage(self):
-            num=len(self)
-            num=int(num)
-            i=0
-            a=0
-            while i<num:
-                a += self.grades[i]
-                i += 1
-            average=a/num
-            return average
-
-        def showGrades(self,index):
-            print(self.course[index])
-            print(self.grades[index])
-
-        def showCourses(self):
-            print(self.course)
-
-        def getHonorRoll(self):
-            self.grades.sort()
-            ave5=(self.grades[-1]+self.grades[-2]+self.grades[-3]+self.grades[-4]+self.grade[-5])/5
-            if ave5 >= 86:
-                print("Honor Roll")
-                return True
-            else:
-                return False
-
-        def __del__(self):
-            print("END")
-
-
+    def average(self):
+        average = sum(self.grades) / len(self.grades)
+        return average
 
 def main():
     # This contains test data that will be used by the autograder.
@@ -115,20 +81,12 @@ def main():
     st1 = student("Anita Bath","91334",11)
     st1.getCourses( ["English","Math","PE","Computers","History","Biology","Japanese"] )
     st1.getGrades( [91, 94, 87, 99, 82, 100, 73])
-    st1.average()
-    st1.showCourses()
-    st1.showGrades(3)
-    st1.HonorRoll()
-
-    
-
+    print(str(st1.average()))
     st2 = student("Joe Lunchbox","12346", 11)
     st2.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
     st2.getGrades( [71, 98, 93, 95, 68, 81, 71])
-    st2.average()
-    st2.showCourses()
-    st2.showGrades(3)
-    st2.HonorRoll()
+
+
 
 
 main()
